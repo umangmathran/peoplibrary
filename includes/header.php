@@ -62,5 +62,5 @@
 			<button type="button" class="w3-button w3-orange w3-display-right"><i class="fa fa-search fa-fw"></i></button>
 		</form>
 		<div style="margin-top:135px; padding-bottom:32px;">
-	';
+';
 ?>
