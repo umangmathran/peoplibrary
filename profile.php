@@ -11,10 +11,9 @@ if ( $_SESSION['logged_in'] != 1 ) {
 }
 else {
     // Use temporary variables for session variables
-    $fname = $_SESSION['first_name'];
-    $lname = $_SESSION['last_name'];
     $email = $_SESSION['email'];
-    $active = $_SESSION['active'];
+    $result = $mysqli->query("SELECT * FROM user WHERE email='$email'") or die($mysqli->error());
+    $user =  $result->fetch_assoc();
 }
 ?>
 <!DOCTYPE html>
@@ -23,26 +22,15 @@ else {
         <title>People's Library</title><?php
         include('includes/header.php'); ?> 
 		    <div class="w3-modal-content w3-padding" action="addbook.php" method="POST" style="max-width:800px;">
-                <h1 class="w3-center">Welcome, <?php echo $fname ?>!</h1>
-                <?php /*
-                // Keep reminding the user this account is not active, until they activate
-                if ( !$active ){
-                echo
-                '<div class="info">
-                Account is unverified, please confirm your email by clicking
-                on the email link!
-                </div>';
-                }
-                */
-                ?> 
+                <h1 class="w3-center">Welcome, <?php echo $user['fname'] ?>!</h1>
                 <div class="w3-row w3-container">
                     <div class="w3-half">
                         <h4>Your Details:</h4>
-                            Name: <?php echo $fname.' '.$lname; ?> 
-                            <br />Email ID: <?php echo $email; ?> 
-                            <br />Mobile No: <?php echo $email; ?> 
-                            <br />Hostel: <?php echo $email; ?> 
-                            <br />Room No: <?php echo $email; ?> 
+                            Name: <?php echo $user['fname'].' '.$user['lname']; ?> 
+                            <br />Email ID: <?php echo $user['email']; ?> 
+                            <br />Mobile No: <?php echo $user['phone']; ?> 
+                            <br />Hostel: <?php echo $user['hostel']; ?> 
+                            <br />Room No: <?php echo $user['roomno']; ?> 
                     </div>
                     <div class="w3-half w3-right-align">
                     <p><br /><br />
@@ -50,6 +38,15 @@ else {
                         <a href="changepassword.php" class="w3-text-orange w3-hover-text-black" style="text-decoration:none">Change Password <i class="fa fa-gear"></i></a></p>
                     </div>
                 </div>
+                <?php 
+                // Keep reminding the user this account is not active, until they activate
+                if ( !$user['activated'] ){
+                echo
+                '<div class="w3-container w3-small w3-center w3-text-red">
+                <p><br />Your account is still unverified. Please verify your account by clicking the link sent on your email ID!</p>
+                </div>';
+                }
+                ?> 
             </div><?php
             include('includes/footer.php'); ?>
     </body>
