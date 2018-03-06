@@ -29,7 +29,7 @@ Relations as Tables:
     * category/genre
     * description
 
-2. owns
+2. author
     * **bookid**
     * **authname**
     
