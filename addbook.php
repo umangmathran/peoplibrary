@@ -12,32 +12,19 @@ if ( $_SESSION['logged_in'] != 1 ) {
 <!DOCTYPE html>
 <html lang="en-UK">
 	<head>
-		<title>People's Library</title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="css/w3.css">
-		<link rel="stylesheet" href="css/w3-theme-light-blue.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="icon" type="image/png" href="favicon.png"/>
-	</head>
-	
-
-	<body class="w3-light-grey w3-theme-indigo">
-		<?php include('includes/header.php'); ?> 
-		
-		<div class="w3-modal-content w3-padding" style="max-width:800px;">
-			<form class="w3-container" action="addbook.php" method="POST">
-			<p>
-				<b>Search by ISBN:</b>
-				<br />ISBN is a 10 or 13 digit code behind the book.
-			</p><p>
-				<input type="text" class="w3-input" placeholder="Enter ISBN" name="isbn" required>
-			</p><p class="w3-center">
-			<button type="submit" class="w3-button w3-orange" name="addbook">Search</button>
-
-			</p>
-		</form>
+		<title>People's Library</title><?php
+		include('includes/header.php'); ?> 		
+			<div class="w3-modal-content w3-padding" style="max-width:800px;">
+				<form class="w3-container" action="addbook.php" method="POST">
+					<p>
+						<b>Search by ISBN:</b>
+						<br />ISBN is a 10 or 13 digit code behind the book.
+					</p><p>
+						<input type="text" class="w3-input" placeholder="Enter ISBN" name="isbn" required>
+					</p><p class="w3-center">
+						<button type="submit" class="w3-button w3-orange" name="addbook">Search</button>
+					</p>
+				</form>
 			<?php
 				if ($_SERVER['REQUEST_METHOD'] == 'POST') 
 				{
@@ -58,12 +45,12 @@ if ( $_SESSION['logged_in'] != 1 ) {
 						// set options for your request
 						$optParams = [];
 
-						$isbnint = filter_var($_POST['isbn'], FILTER_SANITIZE_NUMBER_INT);
-
+						$isbnint = str_replace(array('+','-'), '', filter_var($_POST['isbn'], FILTER_SANITIZE_NUMBER_INT));
+						
 						// make the API call to retrieve some search results
 						$results = $service->volumes->listVolumes('isbn:'.$isbnint, $optParams);
 						echo '<br/>';
-						foreach ( $results as $item ) {
+						foreach ( $results as $key => $item ) {
 							$link = $item['volumeInfo']['imageLinks']['thumbnail'];
 							echo '
 							<div class="w3-row">
@@ -83,7 +70,6 @@ if ( $_SESSION['logged_in'] != 1 ) {
 									Rated By: </b><br />
 								</div>
 								<div class="w3-half">';
-
 									echo $item['volumeInfo']['title'], "<br /> \n";
 									echo '<a href="' . $item['volumeInfo']['previewLink'] . '">' . 'Link to Google Books' . '</a>', "<br /> \n";
 									echo $item['volumeInfo']['publisher'], "<br /> \n";
@@ -93,12 +79,25 @@ if ( $_SESSION['logged_in'] != 1 ) {
 									echo $item['volumeInfo']['averageRating'], "<br /> \n";
 									echo $item['volumeInfo']['ratingsCount'], "<br /> \n";
 								echo "</div>";
+								
 								echo "<form class=\"w3-padding\" method=\"POST\" action=\"addsbook.php\">
-									<button type=\"submit\" class=\"w3-button w3-right w3-orange\" name=\"".$item['id']."\">Add This Book</button>
+									<input type=\"hidden\" name=\"bookid\" value=\"".$item['id']."\">
+									<input type=\"hidden\" name=\"bisbn\" value=\"".$item['volumeInfo']['industryIdentifiers'][0]['identifier']."\">
+									<input type=\"hidden\" name=\"btitle\" value=\"".$item['volumeInfo']['title']."\">
+									<input type=\"hidden\" name=\"bimg\" value=\"".$item['volumeInfo']['imageLinks']['thumbnail']."\">
+									<input type=\"hidden\" name=\"bpub\" value=\"".$item['volumeInfo']['publisher']."\">
+									<input type=\"hidden\" name=\"bpubd\" value=\"".$item['volumeInfo']['publishedDate']."\">
+									<input type=\"hidden\" name=\"blang\" value=\"".$item['volumeInfo']['language']."\">
+									<input type=\"hidden\" name=\"brate\" value=\"".$item['volumeInfo']['averageRating']."\">
+									<input type=\"hidden\" name=\"bratecount\" value=\"".$item['volumeInfo']['ratingsCount']."\">
+									<button type=\"submit\" class=\"w3-button w3-right w3-orange\" name=\"submit\">Add This Book</button>
 								</form>
 							</div> \n <hr/> \n";
 						}
 					}
+					echo 'Did not find the book that you were trying to add?<br />
+					Send us a request <a href="issue.php" class="w3-text-orange w3-hover-text-black">here</a> and we will notify you as soon as the book is added.';
+					
 				}
 			?>
 			</div>
