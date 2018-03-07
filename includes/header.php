@@ -11,49 +11,49 @@
 		<link rel="icon" type="image/png" href="img/favicon.png"/>
 	</head>
 	<body class="w3-light-grey w3-theme-indigo">
-		<!-- Navigation Bar -->
+		<!-- Navigation Bar Only Large Device -->
 		<div class="w3-top w3-bar w3-border-bottom w3-small w3-hide-small w3-hide-medium w3-theme-dark">
 			<a href="index.php" class="w3-bar-item"><img src="img/logo.png" style="max-height:60px;" /></a>
 			<div class="w3-display-right">';
 		if($_SESSION['logged_in'] == false) {
 			echo '
-				<a href="signin.php" class="w3-button w3-hover-none w3-hover-text-orange"><i class="fa fa-user"></i> Sign in</a>
-				<a href="signup.php" class="w3-button w3-hover-none w3-hover-text-orange"><i class="fa fa-user-plus"></i> Sign up</a>';
+				<a href="signin.php" class="w3-button w3-hover-none w3-hover-text-orange"><i class="fa fa-user fa-fw"></i> Sign in</a>
+				<a href="signup.php" class="w3-button w3-hover-none w3-hover-text-orange"><i class="fa fa-user-plus fa-fw"></i> Sign up</a>';
 		}
 		else {
 			echo '
-				<a href="profile.php" class="w3-button w3-hover-none w3-hover-text-orange"><i class="fa fa-user"></i> My Account</a>
-				<a href="addbook.php" class="w3-button w3-hover-none w3-hover-text-orange"><i class="fa fa-plus"></i> Add Books</a>
-				<a href="booklist.php" class="w3-button w3-hover-none w3-hover-text-orange"><i class="fa fa-book"></i> My Booklists</a>
-				<a href="logout.php" class="w3-button w3-hover-none w3-hover-text-orange"><i class="fa fa-sign-out"></i> Logout</a>';
+				<a href="profile.php" class="w3-button w3-hover-none w3-hover-text-orange"><i class="fa fa-user fa-fw"></i> My Account</a>
+				<a href="addbook.php" class="w3-button w3-hover-none w3-hover-text-orange"><i class="fa fa-plus fa-fw"></i> Add Books</a>
+				<a href="booklist.php" class="w3-button w3-hover-none w3-hover-text-orange"><i class="fa fa-book fa-fw"></i> My Booklists</a>
+				<a href="logout.php" class="w3-button w3-hover-none w3-hover-text-orange"><i class="fa fa-sign-out fa-fw"></i> Logout</a>';
 		}
 		echo '
 			</div>
 		</div>
 		<div class="w3-bar w3-top w3-border-bottom w3-small w3-hide-large w3-theme-dark">
-			<a href="index.php" class="w3-bar-item w3-left"><img src="img/logo.png" style="max-height:60px;" /></a>';
-		if($_SESSION['logged_in'] == false) {
-			echo '
-			<div class="w3-display-right">
-				<a href="signin.php" class="w3-button w3-hover-none w3-hover-text-orange"><i class="fa fa-user"></i></a>
-				<a href="signup.php" class="w3-button w3-hover-none w3-hover-text-orange"><i class="fa fa-user-plus"></i></a>
-			</div>';
-		}
-		echo '
+			<a href="index.php" class="w3-bar-item w3-left"><img src="img/logo.png" style="max-height:60px;" /></a>
 		</div>';
+		echo '
+		<!-- Sidebar Not For Large Device -->
+		<div class="w3-sidebar w3-theme-dark w3-hide-large w3-bar-block w3-animate-right w3-medium" style="top:0; position:fixed; display:none;z-index:5;right:0;" id="menuSidebar">
+			<button class="w3-bar-item w3-button w3-right-align" onclick="w3_close()" style="height:76px;">&times;</button>';
 		if($_SESSION['logged_in'] == true) {
 			echo '
-		<!-- Sidebar -->
-		<div class="w3-sidebar w3-theme-dark w3-hide-large w3-bar-block w3-animate-right w3-large" style="top:0; position:fixed; display:none;z-index:5;right:0;" id="menuSidebar">
-			<button class="w3-bar-item w3-button w3-right-align" onclick="w3_close()">&times;</button>
-			<a href="profile.php" class="w3-bar-item w3-button w3-right-align">My Account <i class="fa fa-user"></i></a>
-			<a href="addbook.php" class="w3-bar-item w3-button w3-right-align">Add Book <i class="fa fa-plus"></i></a>
-			<a href="booklist.php" class="w3-bar-item w3-button w3-right-align">My Booklists <i class="fa fa-book"></i></a>
-			<a href="logout.php" class="w3-bar-item w3-button w3-right-align">Logout <i class="fa fa-sign-out"></i></a>
+			<a href="profile.php" class="w3-bar-item w3-button w3-left-align"><i class="fa fa-user fa-fw"></i>&nbsp;&nbsp;My Account</a>
+			<a href="addbook.php" class="w3-bar-item w3-button w3-left-align"><i class="fa fa-plus fa-fw"></i>&nbsp;&nbsp;Add Book</a>
+			<a href="booklist.php" class="w3-bar-item w3-button w3-left-align"><i class="fa fa-book fa-fw"></i>&nbsp;&nbsp;My Booklists</a>
+			<a href="logout.php" class="w3-bar-item w3-button w3-left-align"><i class="fa fa-sign-out fa-fw"></i>&nbsp;&nbsp;Logout</a>';
+		}
+		else {
+			echo '
+			<a href="signin.php" class="w3-bar-item w3-button w3-left-align"><i class="fa fa-user fa-fw"></i>&nbsp;&nbsp;Sign In</a>
+			<a href="signup.php" class="w3-bar-item w3-button w3-left-align"><i class="fa fa-user-plus fa-fw"></i>&nbsp;&nbsp;Sign Up</a>';
+		}
+		echo '
 		</div>
 		<div class="w3-hide-large w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="menuOverlay"></div>
-		<div style="top:0; position:fixed; z-index:3;right:0;" class="w3-hide-large w3-theme-dark">
-			<button class="w3-button w3-large w3-right w3-theme-dark" onclick="w3_open()">&#9776;</button>
+		<div style="top:0; position:fixed; z-index:3;right:0; height:59px;" class="w3-hide-large w3-theme-dark">
+			<button class="w3-button w3-medium w3-right w3-theme-dark" style="height:76px;" onclick="w3_open()">&#9776;</button>
 		</div>
 		<script>
 			function w3_open() {
@@ -65,7 +65,6 @@
 				document.getElementById("menuOverlay").style.display = "none";
 			}
 		</script>';
-	};
 	echo '
 		<div style="margin-top:140px; padding-bottom:32px;">
 ';
