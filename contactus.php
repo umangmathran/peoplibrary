@@ -8,10 +8,8 @@ if(!isset($_SESSION['logged_in'])) {
 <!DOCTYPE html>
 <html lang="en-UK">
 	<head>
-		<title>People's Library</title>
-		<?php
-			include('includes/header.php'); 
-		?> 
+		<title>People's Library</title><?php
+			include('includes/header.php'); ?> 
 			<div class="w3-modal-content w3-padding" style="max-width:800px;">
 				<div class="w3-panel w3-center">
 					<h1>CONTACT US</h1>
