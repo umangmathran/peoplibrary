@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	<head>
 		<title>People's Library</title><?php
 		include('includes/header.php'); ?> 
-		<form class="w3-modal-content w3-padding" method="post" action="signup.php" style="max-width:600px;">
+		<form class="w3-modal-content w3-padding" method="post" action="signup.php" style="max-width:800px;">
 			<div class="w3-container">
 			<p>
 				<b><u>User Registration</u></b>

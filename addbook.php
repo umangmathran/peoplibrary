@@ -17,12 +17,19 @@ if ( $_SESSION['logged_in'] != 1 ) {
 			<div class="w3-modal-content w3-padding" style="max-width:800px;">
 				<form class="w3-container" action="addbook.php" method="POST">
 					<p>
-						<b>Search by ISBN:</b>
-						<br />ISBN is a 10 or 13 digit code behind the book.
-					</p><p>
-						<input type="text" class="w3-input" placeholder="Enter ISBN" name="isbn" required>
+						<b>Search For Book:</b>
+					</p>
+					</p><p class="w3-small">
+						<input type="text" class="w3-input" placeholder="ISBN *" name="isbn">
+						(10 or 13 digit code generally behind the book)
+			<!--		</p><p class="w3-small">
+						<input type="text" class="w3-input" placeholder="Title" name="title">
+					</p><p class="w3-small">
+						<input type="text" class="w3-input" placeholder="Author" name="author"> -->
 					</p><p class="w3-center">
 						<button type="submit" class="w3-button w3-orange" name="addbook">Search</button>
+					</p><p class="w3-small">
+					All fields marked with asterisk (*) are mandatory.
 					</p>
 				</form>
 			<?php
@@ -42,10 +49,12 @@ if ( $_SESSION['logged_in'] != 1 ) {
 						// get an instance of the Google Books client
 						$service = new Google_Service_Books($client);
 
+						$isbnint = str_replace(array('+','-'), '', filter_var($_POST['isbn'], FILTER_SANITIZE_NUMBER_INT));
+		//				$title = $_POST['title'];
+
 						// set options for your request
 						$optParams = [];
 
-						$isbnint = str_replace(array('+','-'), '', filter_var($_POST['isbn'], FILTER_SANITIZE_NUMBER_INT));
 						
 						// make the API call to retrieve some search results
 						$results = $service->volumes->listVolumes('isbn:'.$isbnint, $optParams);
