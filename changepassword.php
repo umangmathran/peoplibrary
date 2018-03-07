@@ -31,19 +31,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 				}
 				else {
 					$_SESSION['message'] = "Problem in changing your password.
-					<a href=\"changepassword.php\">Click here</a> to try again!";
+					<a href=\"changepassword.php\" class=\"w3-text-orange w3-hover-text-black\" style=\"text-decoration:none\">Click here</a> to try again!";
 					header("location: error.php");
 				}
 			}
 			else {
 				$_SESSION['message'] = "The passwords you entered did not match.
-				<a href=\"changepassword.php\">Click here</a> to try again!";
+				<a href=\"changepassword.php\" class=\"w3-text-orange w3-hover-text-black\" style=\"text-decoration:none\">Click here</a> to try again!";
 				header("location: error.php");
 			}
 		}
 		else {
 			$_SESSION['message'] = "You have entered incorrect password.
-			<a href=\"changepassword.php\">Click here</a> to try again!";
+			<a href=\"changepassword.php\" class=\"w3-text-orange w3-hover-text-black\" style=\"text-decoration:none\">Click here</a> to try again!";
 			header("location: error.php");
 		}
 		

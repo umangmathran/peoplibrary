@@ -16,10 +16,7 @@ $user = $result->fetch_assoc();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') 
 {
-	if (isset($_POST['cancel'])) { //returning to profile page
-		header("location: profile.php");
-	}
-	elseif (isset($_POST['modifydet'])) { //modifying details
+	if (isset($_POST['modifydet'])) { //modifying details
 
 		// Make sure the password is correct. Verifying user
 		if ( password_verify($_POST['password'], $user['password']) ) {
@@ -34,19 +31,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
 				if ( $mysqli->query($sql) ) {
 				$_SESSION['message'] = "Your details have been updated successfully! <br />
-				<a href=\"profile.php\">Click here</a> to view your profile!";
+				<a href=\"profile.php\" class=\"w3-text-orange w3-hover-text-black\" style=\"text-decoration:none\">Click here</a> to view your profile!";
 				header("location: success.php");
 				}
 				else {
 					$_SESSION['message'] = "Problem in updating your details.<br />
-					<a href=\"modify.php\">Click here</a> to try again!";
+					<a href=\"modify.php\" class=\"w3-text-orange w3-hover-text-black\" style=\"text-decoration:none\">Click here</a> to try again!";
 					header("location: error.php");
 
 			}
 		}
 		else {
 			$_SESSION['message'] = "You have entered incorrect password.
-			<a href=\"changepassword.php\">Click here</a> to try again!";
+			<a href=\"changepassword.php\" class=\"w3-text-orange w3-hover-text-black\" style=\"text-decoration:none\">Click here</a> to try again!";
 			header("location: error.php");
 		}
 		
@@ -87,12 +84,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 			<p>
 				<b>Enter Password to Modify Details:</b>
 			</p><p>
-			<input type="password" class="w3-input" placeholder="Password *" minlength="8" name="password">
+			<input type="password" class="w3-input" placeholder="Password *" name="password" required>
 			</p>
 			<p class="w3-center">
 			<button type="submit" class="w3-button w3-orange" name="modifydet">Update Details</button>
 			<button type="reset" class="w3-button w3-orange" name="reset">Reset</button>
-			<button type="submit" class="w3-button w3-orange" name="cancel">Cancel</button>
+			<button class="w3-button w3-orange"><a href="profile.php" style="text-decoration:none;">Cancel</a></button>
 			</p><p class="w3-small">
 			All fields marked with asterisk (*) are mandatory.<br/><br />
 			Not your account?
