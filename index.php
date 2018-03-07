@@ -9,7 +9,8 @@ if(!isset($_SESSION['logged_in'])) {
 <html lang="en-UK">
 	<head>
 		<title>People's Library</title><?php
-		include('includes/header.php'); ?> 
+		include('includes/header.php');
+		include('includes/search.php');?> 
 
 
 		<br />
