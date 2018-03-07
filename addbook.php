@@ -36,7 +36,7 @@ if ( $_SESSION['logged_in'] != 1 ) {
 				if ($_SERVER['REQUEST_METHOD'] == 'POST') 
 				{
 					if (isset($_POST['addbook'])) {
-						require_once 'D:/_XAMPP/htdocs/minor/vendor/autoload.php';
+						require_once './vendor/autoload.php';
 
 						// API key here
 						$API_KEY = 'AIzaSyDU-z__on-RyM4kDjm7gXj0Ip0C_EJ98Ok';
