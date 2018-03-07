@@ -9,13 +9,13 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<link rel="icon" type="image/png" href="favicon.png"/>
+		<link rel="icon" type="image/png" href="img/favicon.png"/>
 	</head>
 
 	<body class="w3-light-grey w3-theme-indigo">
 		<!-- Navigation Bar -->
 		<div class="w3-top w3-bar w3-border-bottom w3-medium w3-hide-small w3-hide-medium w3-theme-dark">
-			<a href="index.php" class="w3-bar-item"><img src="logo.png" style="max-height:60px;" /></a>
+			<a href="index.php" class="w3-bar-item"><img src="img/logo.png" style="max-height:60px;" /></a>
 			<div class="w3-display-right">
 			';
 		if($_SESSION['logged_in'] == false) {
@@ -34,7 +34,7 @@
 			</div>
 		</div>
 		<div class="w3-bar w3-top w3-border-bottom w3-medium w3-hide-large w3-theme-dark">
-			<a href="index.php" class="w3-bar-item w3-left"><img src="logo.png" style="max-height:60px;" /></a>
+			<a href="index.php" class="w3-bar-item w3-left"><img src="img/logo.png" style="max-height:60px;" /></a>
 			<div class="w3-display-right">
 			';
 		if($_SESSION['logged_in'] == false) {
