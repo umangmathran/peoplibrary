@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 				<input type="password" class="w3-input" placeholder="Confirm New Password *" name="conpw" required>
 			</p><p class="w3-center">
 				<button type="submit" class="w3-button w3-orange" name="changepw">Change Password</button>
-				<button class="w3-button w3-orange"><a href="profile.php" style="text-decoration:none;">Cancel</a></button>
+				<a href="profile.php" style="text-decoration:none;"><button type="button" class="w3-button w3-orange">Cancel</button></a>
 			</p><p class="w3-small">
 				All fields marked with asterisk (*) are mandatory.<br /><br />
 				Not your account?

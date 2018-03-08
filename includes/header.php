@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="css/w3.css">
 		<link rel="stylesheet" href="css/w3-theme-light-blue.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="icon" type="image/png" href="img/favicon.png"/>
 	</head>
@@ -23,7 +24,8 @@
 		else {
 			echo '
 				<a href="profile.php" class="w3-button w3-hover-none w3-hover-text-orange"><i class="fa fa-user fa-fw"></i> My Account</a>
-				<a href="addbook.php" class="w3-button w3-hover-none w3-hover-text-orange"><i class="fa fa-plus fa-fw"></i> Add Books</a>
+				<a href="addbook.php" class="w3-button w3-hover-none w3-hover-text-orange"><i class="fa fa-plus fa-fw"></i> Add Book</a>
+				<a href="borrow.php" class="w3-button w3-hover-none w3-hover-text-orange"><i class="fa fa-hand-paper-o fa-fw"></i> Borrow Book</a>
 				<a href="booklist.php" class="w3-button w3-hover-none w3-hover-text-orange"><i class="fa fa-book fa-fw"></i> My Booklists</a>
 				<a href="logout.php" class="w3-button w3-hover-none w3-hover-text-orange"><i class="fa fa-sign-out fa-fw"></i> Logout</a>';
 		}
@@ -41,6 +43,7 @@
 			echo '
 			<a href="profile.php" class="w3-bar-item w3-button w3-left-align"><i class="fa fa-user fa-fw"></i>&nbsp;&nbsp;My Account</a>
 			<a href="addbook.php" class="w3-bar-item w3-button w3-left-align"><i class="fa fa-plus fa-fw"></i>&nbsp;&nbsp;Add Book</a>
+			<a href="borrow.php" class="w3-bar-item w3-button w3-left-align"><i class="fa fa-hand-paper-o fa-fw"></i>&nbsp;&nbsp;Borrow Book</a>
 			<a href="booklist.php" class="w3-bar-item w3-button w3-left-align"><i class="fa fa-book fa-fw"></i>&nbsp;&nbsp;My Booklists</a>
 			<a href="logout.php" class="w3-bar-item w3-button w3-left-align"><i class="fa fa-sign-out fa-fw"></i>&nbsp;&nbsp;Logout</a>';
 		}

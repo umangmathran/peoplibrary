@@ -33,9 +33,9 @@ else {
                             <br />Room No: <?php echo $user['roomno']; ?> 
                     </div>
                     <div class="w3-half w3-right-align">
-                    <p><br /><br />
-                        <a href="modify.php" class="w3-text-orange w3-hover-text-black" style="text-decoration:none">Edit Personal Details <i class="fa fa-pencil"></i></a><br/>
-                        <a href="changepassword.php" class="w3-text-orange w3-hover-text-black" style="text-decoration:none">Change Password <i class="fa fa-gear"></i></a></p>
+                    <p class="w3-display-bottomright" style="margin-right: 20px;">
+                        <a href="modify.php" class="w3-text-orange w3-hover-text-black" style="text-decoration:none">Edit Personal Details <i class="fa fa-pencil fa-fw"></i></a><br/>
+                        <a href="changepassword.php" class="w3-text-orange w3-hover-text-black" style="text-decoration:none">Change Password <i class="fa fa-gear fa-fw"></i></a></p>
                     </div>
                 </div>
                 <?php 
@@ -47,6 +47,7 @@ else {
                 </div>';
                 }
                 ?> 
+                <br /><br /><br />
             </div><?php
             include('includes/footer.php'); ?>
     </body>
