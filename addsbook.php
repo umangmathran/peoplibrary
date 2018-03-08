@@ -25,7 +25,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $mysqli->query($sql);
     }
 
-    $sql = "INSERT INTO owns VALUES ('$_SESSION[email]', '$bookid')";
+    $result = $mysqli->query("SELECT * FROM owns WHERE bookid='$bookid' and email='$_SESSION[email]'") or die($mysqli->error());
+
+    if ( $result->num_rows == 0 ) { 
+        $sql = "INSERT INTO owns VALUES ('$_SESSION[email]', '$bookid', '1')";
+    }
+    else {
+        $sql = "UPDATE owns SET bcount = bcount + 1 WHERE bookid='$bookid' and email='$_SESSION[email]'";
+    }
 
     if( $mysqli->query($sql) ) {
         $_SESSION['message'] = 'Added book!';

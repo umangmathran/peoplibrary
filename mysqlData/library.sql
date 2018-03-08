@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2018 at 09:44 AM
+-- Generation Time: Mar 08, 2018 at 05:52 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.0.26
 
@@ -59,6 +59,7 @@ INSERT INTO `book` (`bookid`, `isbn`, `title`, `img`, `pubyr`, `publisher`, `rat
 ('tW4VngEACAAJ', '0133943038', 'Software Engineering', 'http://books.google.com/books/content?id=tW4VngEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api', '2015-03-24', 'Addison-Wesley', 5.0, 1, 'en'),
 ('V26Kv0-rInAC', '9783642235825', 'Sensor Systems and Software', 'http://books.google.com/books/content?id=V26Kv0-rInAC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', '2011-09-06', 'Springer Science & Business Media', 0.0, 0, 'en'),
 ('VSAtjgEACAAJ', '0133594149', 'Computer Networking', 'http://books.google.com/books/content?id=VSAtjgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api', '2016-04-19', 'Pearson', 4.5, 2, 'en'),
+('wRYXFHqwW98C', '0142437204', 'Jane Eyre', 'http://books.google.com/books/content?id=wRYXFHqwW98C&printsec=frontcover&img=1&zoom=1&source=gbs_api', '1996', 'Penguin', 4.0, 2226, 'en'),
 ('xC7rQwAACAAJ', '0241950422', 'The Catcher in the Rye', 'http://books.google.com/books/content?id=xC7rQwAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api', '2010', '', 3.5, 3118, 'en'),
 ('xyv-7LzdSsAC', '9780237534615', 'Glub!', 'http://books.google.com/books/content?id=xyv-7LzdSsAC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', '2008-02-01', 'Evans Brothers', 0.0, 0, 'en');
 
@@ -70,25 +71,20 @@ INSERT INTO `book` (`bookid`, `isbn`, `title`, `img`, `pubyr`, `publisher`, `rat
 
 CREATE TABLE `owns` (
   `email` varchar(50) NOT NULL,
-  `bookid` varchar(50) NOT NULL
+  `bookid` varchar(50) NOT NULL,
+  `bcount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `owns`
 --
 
-INSERT INTO `owns` (`email`, `bookid`) VALUES
-('umang.tsk@gmail.com', 'hmY5mAEACAAJ'),
-('umang.tsk@gmail.com', 'VSAtjgEACAAJ'),
-('umang.tsk@gmail.com', '8jZBksh-bUMC'),
-('umang.tsk@gmail.com', 'i-bUBQAAQBAJ'),
-('umang.tsk@gmail.com', 'tW4VngEACAAJ'),
-('surabhi@book.com', '8jZBksh-bUMC'),
-('surabhi@book.com', '8jZBksh-bUMC'),
-('umang.tsk@gmail.com', 'xC7rQwAACAAJ'),
-('umang.tsk@gmail.com', 'xyv-7LzdSsAC'),
-('umang.tsk@gmail.com', 'idKWU-tWJpgC'),
-('umang.tsk@gmail.com', 'dH6us3u6d2QC');
+INSERT INTO `owns` (`email`, `bookid`, `bcount`) VALUES
+('umang.tsk@gmail.com', '2xWHAQAACAAJ', 1),
+('umang.tsk@gmail.com', 'i-bUBQAAQBAJ', 1),
+('umang.tsk@gmail.com', 're4YQAAACAAJ', 1),
+('umang.tsk@gmail.com', 'tW4VngEACAAJ', 1),
+('umang.tsk@gmail.com', 'VSAtjgEACAAJ', 2);
 
 -- --------------------------------------------------------
 
@@ -118,7 +114,7 @@ INSERT INTO `user` (`fname`, `lname`, `email`, `password`, `hostel`, `roomno`, `
 ('Surabhi', 'Suman', 'surabhi@book.com', '$2y$10$yA0e7CPy2VT4TdyNXb/XUOX4gij8DrXkbQ/8d5v3aMCHBIGvQ2XbW', 'Rosaline', 110, 9876543210, '82cec96096d4281b7c95cd7e74623496', 0),
 ('Sura', 'Suman', 'surabhisuman@fme.ism.ac.in', '$2y$10$.RBsHvWuNXFOaEfQi3MmSukn.Vu9X3o6.ZLtasw.EFZILxMzrlzo.', 'Rosaline', 11, 7488515675, '851ddf5058cf22df63d3344ad89919cf', 0),
 ('Umang', 'Mathran', 'umang.mathran@gmail.com', '$2y$10$FXK2HlqKmWCoikcTLtp7qer4wVPXvPmONdsP.ksfWhSXjwl.8tvU6', 'Diamond', 159, 9504413007, '9b698eb3105bd82528f23d0c92dedfc0', 0),
-('User', 'Umang', 'umang.tsk@gmail.com', '$2y$10$mMgw4bKxJg.1spYJVOu7Ze8EjBr7W00HTq1tulcHtLHxE2XaYG8uy', 'Diamond', 321, 9785385202, '1bb91f73e9d31ea2830a5e73ce3ed328', 0);
+('User', 'Umang', 'umang.tsk@gmail.com', '$2y$10$mMgw4bKxJg.1spYJVOu7Ze8EjBr7W00HTq1tulcHtLHxE2XaYG8uy', 'Diamond', 1, 9785385243, '1bb91f73e9d31ea2830a5e73ce3ed328', 0);
 
 --
 -- Indexes for dumped tables
@@ -129,6 +125,12 @@ INSERT INTO `user` (`fname`, `lname`, `email`, `password`, `hostel`, `roomno`, `
 --
 ALTER TABLE `book`
   ADD PRIMARY KEY (`bookid`);
+
+--
+-- Indexes for table `owns`
+--
+ALTER TABLE `owns`
+  ADD PRIMARY KEY (`email`,`bookid`);
 
 --
 -- Indexes for table `user`
