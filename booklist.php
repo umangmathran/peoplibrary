@@ -12,7 +12,7 @@ if ( $_SESSION['logged_in'] != 1 ) {
 else {
     // Use temporary variables for session variables
     $email = $_SESSION['email'];
-	$results = $mysqli->query("SELECT DISTINCT * FROM owns WHERE email='$email'") or die($mysqli->error());
+	$results = $mysqli->query("SELECT * FROM owns WHERE email='$email'") or die($mysqli->error());
 }
 ?>
 <!DOCTYPE html>
@@ -39,7 +39,7 @@ else {
 						<p>'.$currBook['title'].'</p>
 					</div>';
 				}
-				if($key > 4) {
+				if($key > 3) {
 					$loop = 1;
 					foreach ($results as $key => $book)	{
 						$result = $mysqli->query("SELECT * FROM book WHERE bookid='$book[bookid]'") or die($mysqli->error());
